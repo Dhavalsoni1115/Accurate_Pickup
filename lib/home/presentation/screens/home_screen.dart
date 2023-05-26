@@ -1,21 +1,16 @@
-import 'dart:convert';
 
-import 'package:accurate_laboratory/login/data/data_source/fcm_token_data.dart';
 import 'package:accurate_laboratory/shared/presentation/screens/appoitment_detail_screen.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 
-import 'package:shared_preferences/shared_preferences.dart';
-
 import '../../../complete/presentation/screens/complete_screen.dart';
 import '../../../constants.dart';
+import '../../../login/data/data_source/fcm_token_data.dart';
 import '../../../login/data/data_source/staff_shared_pref.dart';
 import '../../../login/presentation/screens/login_screen.dart';
 import '../../../ongoing/presentation/screens/ongoing_screen.dart';
 import '../../../open/presentation/screens/open_screen.dart';
 import '../../../shared/services/notification_service.dart';
-import '../../../splash/presentation/screen/splash_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   final String staffId;
@@ -27,11 +22,8 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int groupValue = 0;
-  // getFcmToken() async {
-  //   String? fcmToken = await FirebaseMessaging.instance.getToken();
-  // }
-
   var notificationService = NotificationService();
+
   getNotification() {
     notificationService.initialize(
       onReciveNotification: (notificationResponse) async {
@@ -52,9 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
     FirebaseMessaging.instance.getInitialMessage().then(
       (message) {
-        print("FirebaseMessaging.instance.getInitialMessage");
         if (message != null) {
-          print("New Notification");
           if (message.data['id'] != null) {
             Navigator.push(
               context,

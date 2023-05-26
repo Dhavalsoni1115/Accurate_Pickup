@@ -67,12 +67,6 @@ class _AppoitmentDetailScreenState extends State<AppoitmentDetailScreen> {
   Future<void> getCurrentLocarion() async {
     var location = Location();
     hasPermission = await location.handleLocationPermission(context: context);
-    print('=-=-=-=-=-=-');
-    print(hasPermission);
-    // if (hasPermission == true) {
-    //   lounchMap();
-    // }
-
     if (!hasPermission) return;
     await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high)
         .then((Position position) {
@@ -86,7 +80,6 @@ class _AppoitmentDetailScreenState extends State<AppoitmentDetailScreen> {
   @override
   void initState() {
     super.initState();
-    //getCurrentLocarion();
     getSelectedAppotment();
   }
 
@@ -172,22 +165,35 @@ class _AppoitmentDetailScreenState extends State<AppoitmentDetailScreen> {
                         ],
                       )
                     : SizedBox(),
-                SizedBox(
-                  height: 15,
-                ),
-                Row(
-                  children: [
-                    ShowText(
-                      label: 'Test:',
-                      detail: selectedAppoitmentData['tests']
-                          .map((e) => e['name'].toString())
-                          .toString(),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 15,
-                ),
+                selectedAppoitmentData['tests']
+                        .map((e) => e['name'].toString())
+                        .isNotEmpty
+                    ? SizedBox(
+                        height: 15,
+                      )
+                    : SizedBox(),
+                selectedAppoitmentData['tests']
+                        .map((e) => e['name'].toString())
+                        .isNotEmpty
+                    ? Row(
+                        children: [
+                          ShowText(
+                            label: 'Test:',
+                            detail: selectedAppoitmentData['tests']
+                                .map((e) => e['name'].toString())
+                                .toString(),
+                          ),
+                        ],
+                      )
+                    : SizedBox(),
+                selectedAppoitmentData['tests']
+                        .map((e) => e['name'].toString())
+                        .toString()
+                        .isNotEmpty
+                    ? SizedBox(
+                        height: 15,
+                      )
+                    : SizedBox(),
                 Row(
                   children: [
                     ShowText(
@@ -339,7 +345,6 @@ class _AppoitmentDetailScreenState extends State<AppoitmentDetailScreen> {
                                     : setState(() {
                                         changeStatus(
                                             dropdownValue, widget.appoitmentId);
-                                        print(dropdownValue);
                                         Navigator.pop(context);
                                       });
                               },

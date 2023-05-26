@@ -7,7 +7,6 @@ class FcmToken {
       // get FCM token
       final FirebaseMessaging fcm = FirebaseMessaging.instance;
       final token = await fcm.getToken();
-      print('11111111');
       print(token);
     } catch (Exception) {
       final String token = "";

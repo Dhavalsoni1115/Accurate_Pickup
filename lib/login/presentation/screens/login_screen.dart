@@ -178,8 +178,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                   email: email,
                                   password: password,
                                 );
-                                print('id');
-                                print(staffId);
                                 await getSelectedStaff(staffId);
                                 if (staffId == null) {
                                   ScaffoldMessenger.of(context).showSnackBar(
@@ -189,10 +187,10 @@ class _LoginScreenState extends State<LoginScreen> {
                                     ),
                                   );
                                 }
-                                String selectedId =
-                                    await selectedStaffData['id'];
-                                if (staffId == selectedStaffData['id']) {
-                                  if (selectedStaffData['active'] == true) {
+                                dynamic selectedStaff =
+                                    await selectedStaffData;
+                                if (selectedStaff != null && staffId == selectedStaff['id']) {
+                                  if (selectedStaff['active'] == true) {
                                     setState(() {
                                       loginButton = true;
                                     });
@@ -224,7 +222,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                     );
                                   }
                                 }
-                                // print(selectedStaffdata.toJson());
                               },
                               buttonName: 'Login',
                             )
