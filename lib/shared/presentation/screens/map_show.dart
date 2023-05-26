@@ -43,15 +43,7 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
                 onTap: () {
                   print('hello');
                 }
-                // onDragEnd: (value) {
-                //   // value is the new position
-                // },
-                // To do: custom marker icon
                 ),
-            // Marker(
-            //   markerId: const MarkerId("marker2"),
-            //   position: const LatLng(20.7702, 72.9824),
-            // ),
           },
           onMapCreated: (GoogleMapController controller) {
             _controller.complete(controller);

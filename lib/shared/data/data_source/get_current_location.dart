@@ -13,9 +13,6 @@ class Location {
     serviceEnabled = await Geolocator.isLocationServiceEnabled();
     print(serviceEnabled);
     if (!serviceEnabled) {
-      // ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-      //     content: Text(
-      //         'Location services are disabled. Please enable the services')));
       return true;
     }
     permission = await Geolocator.checkPermission();

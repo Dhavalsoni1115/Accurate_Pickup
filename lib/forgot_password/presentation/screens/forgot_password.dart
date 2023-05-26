@@ -2,11 +2,9 @@ import 'package:accurate_laboratory/login/presentation/screens/login_screen.dart
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../../../constants.dart';
-import '../../../home/presentation/screens/home_screen.dart';
 import '../../../login/presentation/widgets/common_textfield.dart';
 import '../../../login/presentation/widgets/login_button.dart';
 import '../../../shared/data/data_source/get_staff_data.dart';
-import '../../../shared/services/notification_service.dart';
 
 class ForgotPassword extends StatefulWidget {
   const ForgotPassword({Key? key}) : super(key: key);
@@ -20,21 +18,6 @@ class _ForgotPasswordState extends State<ForgotPassword> {
   String email = '';
   TextEditingController emailController = TextEditingController();
 
-  // dynamic selectedStaffData;
-  // getSelectedStaff(String staffId) async {
-  //   var staff = Staff();
-  //   selectedStaffData = await staff.getSelectStaffDetail(staffId);
-  //   print(selectedStaffData);
-  //   print('=x=x==x=x=x=x=x');
-  //   return selectedStaffData;
-  // }
-
-  // String token = '';
-  // getFcmToken() async {
-  //   var fcm = NotificationService();
-  //   token = await fcm.getDeviceToken();
-  //   return token;
-  // }
   dynamic staffData = [];
   getStaffData() async {
     var staff = Staff();

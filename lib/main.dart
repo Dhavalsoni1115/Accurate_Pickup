@@ -21,7 +21,6 @@ Future<void> backgroundHandler(RemoteMessage message) async {
   print(message.notification.title.toString());
 }
 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
